@@ -16,6 +16,13 @@ spec:
       - name: zai
         image: chengmoo/v2ray-openshift
         imagePullPolicy: Always
+        resources:
+         requests:
+          cpu: 1m
+          memory: 8Mi
+         limits:
+          cpu: 2m
+          memory: 16Mi
         ports:
         - containerPort: 8080
         env:

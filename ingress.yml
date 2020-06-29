@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - example-host.k8spin.cloud
-    secretName: hello-world-certificate
+    secretName: zai-certificate
   rules:
   - host: example-host.k8spin.cloud
     http:

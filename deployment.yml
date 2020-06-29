@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zai
+spec:
+  selector:
+    matchLabels:
+      app: zai
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zai
+    spec:
+      containers:
+      - name: zai
+        image: chengmoo/v2ray-openshift
+        ports:
+        - containerPort: 8080

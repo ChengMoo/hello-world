@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: zai
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: example-issuer
+spec:
+  tls:
+  - hosts:
+    - example-host.k8spin.cloud
+    secretName: hello-world-certificate
+  rules:
+  - host: example-host.k8spin.cloud
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: zai
+          servicePort: 80

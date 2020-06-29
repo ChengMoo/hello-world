@@ -16,4 +16,23 @@ spec:
       - name: zai
         image: chengmoo/v2ray-openshift
         ports:
-        - containerPort: 8080
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: CONFIG_JSON
+              value: '{"inbounds":[{"port":8080,"protocol":"vmess","settings":{"clients":[{"id":"ad806487-2d26-4636-98b6-ab85cc8521f7","alterId":64}]},"streamSettings":{"network":"ws","wsSettings":{"path":"/ws"}}}],"outbounds":[{"protocol":"freedom","settings":{}}]}'
+          resources:
+            limits:
+              cpu: 2m
+              memory: 16Mi
+            requests:
+              cpu: 1m
+              memory: 8Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler

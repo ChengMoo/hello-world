@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zai
+  name: test
 spec:
   selector:
     matchLabels:
-      app: zai
+      app: test
   replicas: 1
   template:
     metadata:
       labels:
-        app: zai
+        app: test
     spec:
       containers:
-      - name: zai
-        image: chengmoo/v2ray-openshift
+      - name: test
+        image: a9289/ruby
         imagePullPolicy: Always
         resources:
          requests:
@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: zai
+  name: test
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
@@ -45,4 +45,4 @@ spec:
     targetPort: 8080
     protocol: TCP
   selector:
-    app: zai
+    app: test
